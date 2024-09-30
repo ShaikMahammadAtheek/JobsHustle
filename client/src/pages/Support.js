@@ -25,7 +25,7 @@ const Support = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/feedback', feedback);
+      const response = await axios.post('https://jobs-hustle.onrender.com/api/feedback', feedback);
       if (response.data.success) {
         setStatus('Feedback submitted successfully!');
             // Hide the message after 5 seconds
