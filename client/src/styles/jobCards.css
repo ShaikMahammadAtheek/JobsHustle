@@ -1,0 +1,75 @@
+/*
+.job-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .job-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .job-card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+  
+  */
+
+  /* Job Cards Page Styles */
+.job-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding: 20px; /* Add padding for better spacing on smaller screens */
+}
+
+.job-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .job-card {
+      width: 220px; /* Adjust card width for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .job-card {
+      width: 180px; /* Further adjust card width for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .job-card {
+      width: 100%; /* Make card full-width on very small screens */
+      max-width: 300px; /* Limit the maximum width for readability */
+  }
+  
+  .job-list {
+      gap: 8px; /* Reduce gap between cards for smaller screens */
+  }
+}
+
+/* Job Card Image */
+.job-card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 8px;
+}

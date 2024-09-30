@@ -1,0 +1,75 @@
+/*
+.internships-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .internships-heading {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .internships-job-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  */
+  
+  /* Use same card styles as OffCampus */
+  
+  /* Internships Page Styles */
+.internships-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.internships-heading {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.internships-job-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .internships-job-cards {
+      grid-template-columns: repeat(3, 1fr); /* Adjust to 3 columns for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .internships-job-cards {
+      grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for smaller screens */
+  }
+
+  .internships-container {
+      padding: 15px; /* Reduce padding for smaller screens */
+  }
+
+  .internships-heading {
+      font-size: 1.5rem; /* Reduce font size for headings on smaller screens */
+      margin-bottom: 15px; /* Reduce margin for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .internships-job-cards {
+      grid-template-columns: 1fr; /* Single column for very small screens */
+  }
+
+  .internships-container {
+      padding: 10px; /* Further reduce padding for very small screens */
+  }
+
+  .internships-heading {
+      font-size: 1.25rem; /* Further reduce font size for headings on very small screens */
+      margin-bottom: 10px; /* Further reduce margin for very small screens */
+  }
+}

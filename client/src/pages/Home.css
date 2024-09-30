@@ -1,0 +1,326 @@
+/*
+.home {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  .job-notifications {
+    margin-bottom: 40px;
+  }
+  
+  .job-notifications h2 {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .job-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+ 
+  .top-jobs {
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .section-heading {
+    color: #343a40;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  
+  .top-jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+  }
+  
+  
+  .subscribe-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .subscribe-section h3 {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .subscribe-btn {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+
+  .feedback-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .feedback-section h3 {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .feedback-form input, 
+  .feedback-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .feedback-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+      grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+      grid-template-columns: 1fr; 
+  }
+}
+*/
+
+/* Home Page Styles */
+.home {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.job-notifications {
+  margin-bottom: 40px;
+}
+
+.job-notifications h2 {
+  color: #007bff;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  
+}
+
+.top-jobs {
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.section-heading {
+  color: #343a40;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.top-jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.subscribe-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.subscribe-section h3 {
+  color: #007bff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.subscribe-btn {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Styling for the feedback form */
+.feedback-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.feedback-section h3 {
+  color: #007bff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feedback-form input, 
+.feedback-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.feedback-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+
+.top-card {
+  position: relative;     /* Ensure the top-card is the positioning context */
+  padding-bottom: 50px;   /* Add padding at the bottom to accommodate the fixed button */
+}
+
+.jobss a{
+  position: absolute;     /* Position the link absolutely within the top-card */
+  bottom: 10px;           /* Position it 10px from the bottom of the card */
+  left: 50%;              /* Align the left side at 50% of the width */
+  transform: translateX(-50%); /* Center the button horizontally */
+  color: white;         /* Link color */
+  text-decoration: none;  /* Remove underline */
+  font-weight: bold;      /* Make the text bold */
+  padding: 10px 20px;     /* Add padding for a button-like appearance */
+  background-color: #0080ff; /* Add a background color */
+  border-radius: 5px;     /* Add rounded corners */
+}
+
+.jobss a:hover {
+  background-color: #51a5eb; /* Slightly change background on hover */
+  color: white;         /* Change color on hover */
+}
+
+/*
+.jobss a {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  background-color: #fc9b25;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.jobss a:hover {
+  background-color: #a36615;
+}
+  */
+/* Responsive Design */
+.job-grid {
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  
+}
+
+.top-jobs-grid {
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+}
+
+@media (max-width: 1024px) {
+  .job-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+  }
+
+  .top-jobs-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .job-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+  }
+
+  .top-jobs-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on small screens */
+  }
+
+  .subscribe-btn, .feedback-form button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .job-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile screens */
+  }
+
+  .top-jobs-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile screens */
+  }
+
+  .subscribe-btn, .feedback-form button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .feedback-form input,
+  .feedback-form textarea {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .job-notifications h2,
+  .section-heading,
+  .subscribe-section h3,
+  .feedback-section h3 {
+    font-size: 20px; /* Adjust font sizes for headings on mobile */
+  }
+}
+
+

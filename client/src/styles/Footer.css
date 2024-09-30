@@ -1,0 +1,166 @@
+/* Footer Component Styles */
+/*
+footer {
+    background-color: #001d3d;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.footer-logo .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 10px;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    transform: scale(1.2);
+}
+
+.footer-links img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-about p {
+    margin: 1rem 0;
+    
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+i{
+    color: white;
+}
+
+*/
+
+/* Footer Component Styles */
+footer {
+    background-color: #001d3d;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.footer-logo .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 10px;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    transform: scale(1.2);
+}
+
+.footer-links img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-about p {
+    margin: 1rem 0;
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+i {
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-logo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo .logo {
+        margin-bottom: 10px;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        
+    }
+
+    .footer-links a {
+        margin: 2.5px 0;
+        padding: 0.5rem;
+    }
+
+    .footer-about p {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+
+    .footer-copyright {
+        font-size: 0.8rem; /* Adjust font size for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-logo .logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .footer-links img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .footer-about p {
+        font-size: 0.8rem; /* Further reduce font size */
+    }
+
+    .footer-copyright {
+        font-size: 0.7rem; /* Further reduce font size */
+    }
+}

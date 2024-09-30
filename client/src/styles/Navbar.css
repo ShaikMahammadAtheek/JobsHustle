@@ -1,0 +1,645 @@
+/*
+
+nav {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #333;
+    border-radius: 4px;
+}
+
+
+nav ul li ul {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #333;
+    list-style: none;
+    padding: 0;
+    display: none;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li a {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    display: block;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar li {
+    margin-right: 20px;
+    position: relative; 
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar .dropdown {
+    position: relative;
+}
+
+.navbar .dropdown-toggle {
+    cursor: pointer;
+    color: white;
+}
+
+.navbar .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    padding: 10px;
+    min-width: 150px;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .navbar ul li {
+    margin-right: 20px;
+  }
+  
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+  }
+  
+  .city-select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+ */
+
+
+
+
+/*Main Code*/
+
+/* Navbar Styles */
+
+/*
+.navbar {
+    background-color: #001d3d;
+    padding: 25px;
+    border-radius: 5px;
+    position: relative;
+}
+
+
+#navlogo{
+    color: white;
+    align-items: center;
+    margin: 0 14px;
+    position: relative;
+    display: inline-block;
+}
+
+#navlogo img{
+    height: 42px;
+    display: block;
+    mix-blend-mode: screen; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    position: relative;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #444;
+    border-radius: 4px;
+}
+
+.city-select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.city-select option {
+    font-size: 1rem;
+}
+
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-toggle {
+    color: white;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #001d3d; 
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    z-index: 1000;
+    width: 140px;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 5px 10px;
+    color: white; 
+    cursor: pointer;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    width: 100%;
+}
+
+.dropdown-item:hover {
+    background-color: #003366; 
+}
+
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+*/
+
+
+
+
+/* thisis reponsive code */
+/* Navbar Styles */
+/*
+.navbar {
+    background-color: #001d3d;
+    padding: 20px; 
+    border-radius: 5px;
+    position: relative;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    position: relative;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #444;
+    border-radius: 4px;
+}
+
+.city-select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.city-select option {
+    font-size: 1rem;
+}
+
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-toggle {
+    color: white;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #001d3d; 
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    z-index: 1000;
+    width: 140px;
+    display: none;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 5px 10px;
+    color: white; 
+    cursor: pointer;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    width: 100%;
+}
+
+.dropdown-item:hover {
+    background-color: #003366; 
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+*/
+/* Responsive Design */
+/*
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px; 
+    }
+
+    .navbar ul {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .navbar ul li {
+        margin-bottom: 10px; 
+    }
+
+    .city-select {
+        margin-top: 10px; 
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        box-sizing: border-box; 
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px; 
+    }
+
+    .navbar ul li a {
+        padding: 0.5rem; 
+        font-size: 0.9rem; 
+    }
+
+    .city-select {
+        font-size: 0.9rem; 
+    }
+}
+
+
+*/
+
+
+
+
+/*Menu Code*/
+
+.navbar {
+  background-color: #001d3d;
+  padding: 25px;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#navlogo {
+  color: white;
+  margin: 0 14px;
+}
+
+#navlogo img {
+  height: 42px;
+  display: block;
+  mix-blend-mode: screen;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  position: relative;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  background-color: #444;
+  border-radius: 4px;
+}
+
+.city-select {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.city-select option {
+  font-size: 1rem;
+}
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-toggle {
+  color: white;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #001d3d;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  z-index: 1000;
+  width: 140px;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  width: 100%;
+}
+
+.dropdown-item:hover {
+  background-color: #003366;
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  margin: 2px 0;
+}
+
+.hamburger .close-btn {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background-color: #001d3d;
+  }
+
+  .navbar ul.open {
+    display: flex;
+  }
+
+  .navbar ul li {
+    margin-bottom: 10px;
+  }
+
+  .navbar ul li a {
+    padding: 1rem;
+  }
+
+  .city-select {
+    margin-top: 10px;
+  }
+}
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Navbar Styles     FINAL TESTING CODE*/
+/*
+.navbar {
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .navbar ul li {
+    margin-right: 20px;
+    position: relative; 
+  }
+  
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar .dropdown {
+    position: relative;
+  }
+  
+  .navbar .dropdown-toggle {
+    cursor: pointer;
+    color: white;
+  }
+  
+  .navbar .dropdown-select {
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    padding: 10px;
+    min-width: 150px;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+  }
+  
+  .navbar .dropdown:hover .dropdown-select {
+    display: block; 
+  }
+  
+*/
+
+

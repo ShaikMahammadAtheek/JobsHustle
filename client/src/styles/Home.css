@@ -1,0 +1,221 @@
+/* Home Page Styles */
+/*
+.home-notifications {
+    padding: 2rem;
+}
+
+.home-notifications h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.home-notifications div {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-cards {
+    margin: 2rem 0;
+}
+
+.job-cards h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.top-components {
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: lightgray;
+    text-align: center;
+}
+
+.top-card-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.top-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+button {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+
+.feedback-form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+.feedback-form h2 {
+    margin-bottom: 1.5rem;
+}
+
+.feedback-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+*/
+
+
+/* Home Page Styles */
+.home-notifications {
+    padding: 2rem;
+}
+
+.home-notifications h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.home-notifications div {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-cards {
+    margin: 2rem 0;
+}
+
+.job-cards h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.top-components {
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: lightgray;
+    text-align: center;
+}
+
+.top-card-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.top-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Subscribe Button */
+button {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+/* Feedback Form */
+.feedback-form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+.feedback-form h2 {
+    margin-bottom: 1.5rem;
+}
+
+.feedback-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .top-card-grid {
+        grid-template-columns: repeat(3, 1fr); /* Adjust to 3 columns for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .top-card-grid {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for smaller screens */
+    }
+
+    .home-notifications,
+    .job-cards,
+    .top-components,
+    .feedback-form {
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .home-notifications div,
+    .feedback-form {
+        margin-bottom: 1rem; /* Reduce margin for smaller screens */
+    }
+    
+    .feedback-form textarea {
+        padding: 0.75rem; /* Adjust padding for smaller screens */
+    }
+    
+    button {
+        padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .top-card-grid {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+    }
+
+    .home-notifications h2,
+    .job-cards h2,
+    .feedback-form h2 {
+        font-size: 1.5rem; /* Reduce font size for headings on very small screens */
+    }
+    
+    .feedback-form textarea {
+        padding: 0.5rem; /* Further adjust padding for very small screens */
+    }
+}

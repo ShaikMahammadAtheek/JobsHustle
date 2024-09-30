@@ -1,0 +1,39 @@
+/* Job Notification Page Styles */
+.job-notification {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-notification h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.job-notification img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.job-notification p {
+    margin: 1rem 0;
+    color: #666;
+    font-size: 1rem;
+}
+
+.job-notification a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #1a73e8;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.job-notification a:hover {
+    background-color: #0b5bb5;
+}

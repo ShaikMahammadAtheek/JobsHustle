@@ -1,0 +1,74 @@
+/*
+.experience-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .experience-heading {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .experience-job-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  */
+  /* Use same card styles as OffCampus */
+  
+  /* Experience Page Styles */
+.experience-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.experience-heading {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.experience-job-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .experience-job-cards {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .experience-job-cards {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-job-cards {
+      grid-template-columns: 1fr; /* 1 column on mobile screens */
+  }
+
+  .experience-heading {
+      font-size: 1.5rem; /* Adjust heading size for smaller screens */
+  }
+
+  .experience-container {
+      padding: 10px; /* Reduce padding on mobile screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .experience-heading {
+      font-size: 1.25rem; /* Further reduce heading size for extra small screens */
+  }
+
+  .experience-container {
+      padding: 5px; /* Minimal padding on extra small screens */
+  }
+}

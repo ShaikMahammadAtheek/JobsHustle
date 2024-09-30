@@ -1,0 +1,300 @@
+/* Card Component Styles */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+    padding: 0.2rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin: 1rem; /* Added margin for spacing */
+    min-height: 400px; 
+}
+
+/* Card overlay effect */
+.card::after {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    width: 200%;
+    height: 100%;
+    top: -90%;
+    left: -20px;
+    opacity: 0.1;
+    transform: rotate(45deg);
+    background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
+    transition: 0.3s;
+}
+
+.card:hover::after {
+    transform: rotate(25deg);
+    top: -40%;
+    opacity: 0.15;
+}
+
+/* Card text */
+.card p {
+    font-size: 1.25rem;
+    color: #666;
+    padding: 0 1rem;
+}
+
+/* Card hover effect */
+.card:hover {
+    color: var(--white);
+    background: var(--radial-gradient);
+    color: white;
+    transform: translateY(-5px);
+    background-color: rgb(13, 27, 42);
+}
+
+/* Card image */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Card heading */
+.card h3 {
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+/* Card link */
+
+.card-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #fc9b25;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    position: absolute;   /* Fix the link at the bottom of the card */
+    bottom: 10px;         /* Position it 10px from the bottom */
+    left: 50%;            /* Center the button horizontally */
+    transform: translateX(-50%); /* Ensure perfect centering */
+    transition: background-color 0.3s ease;
+}
+
+.card-link:hover {
+    background-color: #a36615;
+}
+/*
+.card a {
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background-color: #fc9b25;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.card a:hover {
+    background-color: #a36615;
+}
+*/
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .card {
+        margin: 0.5rem; /* Reduce margin on medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        margin: 0.5rem; /* Reduce margin on tablets */
+    }
+
+    .card img {
+        height: 150px; /* Adjust image height for smaller screens */
+    }
+
+    .card p {
+        font-size: 1rem; /* Adjust text size for readability on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin: 0.25rem; /* Reduce margin on mobile screens */
+    }
+
+    .card img {
+        height: 120px; /* Adjust image height further for smaller screens */
+    }
+
+    .card p {
+        font-size: 0.9rem; /* Further reduce text size */
+    }
+
+    .card a {
+        padding: 0.5rem; /* Adjust button padding for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        margin: 0.1rem; /* Minimal margin on extra small screens */
+    }
+
+    .card img {
+        height: 100px; /* Adjust image height for extra small screens */
+    }
+
+    .card p {
+        font-size: 0.8rem; /* Further reduce text size */
+    }
+
+    .card a {
+        padding: 0.4rem; /* Adjust button padding for extra small screens */
+    }
+}
+
+
+
+/*.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+    padding: 0.2rem;
+    cursor: pointer;
+    position: relative;  
+    margin: 1rem;
+    min-height: 400px;    
+}
+
+
+.card::after {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    width: 200%;
+    height: 100%;
+    top: -90%;
+    left: -20px;
+    opacity: 0.1;
+    transform: rotate(45deg);
+    background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
+    transition: 0.3s;
+}
+
+.card:hover::after {
+    transform: rotate(25deg);
+    top: -40%;
+    opacity: 0.15;
+}
+
+
+.card p {
+    font-size: 1.25rem;
+    color: #666;
+    padding: 0 1rem;
+}
+
+
+.card:hover {
+    color: var(--white);
+    background: var(--radial-gradient);
+    color: white;
+    transform: translateY(-5px);
+    background-color: rgb(13, 27, 42);
+}
+
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+.card h3 {
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+
+.card-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #fc9b25;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    position: absolute;   
+    bottom: 10px;        
+    left: 50%;           
+    transform: translateX(-50%); 
+    transition: background-color 0.3s ease;
+}
+
+.card-link:hover {
+    background-color: #a36615;
+}
+
+@media (max-width: 1200px) {
+    .card {
+        margin: 0.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        margin: 0.5rem;
+    }
+
+    .card img {
+        height: 150px;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin: 0.25rem;
+    }
+
+    .card img {
+        height: 120px;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+    }
+
+    .card a {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        margin: 0.1rem;
+    }
+
+    .card img {
+        height: 100px;
+    }
+
+    .card p {
+        font-size: 0.8rem;
+    }
+
+    .card a {
+        padding: 0.4rem;
+    }
+}
+*/
