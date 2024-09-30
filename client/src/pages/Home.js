@@ -24,7 +24,7 @@ const Home = () => {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/home') // Fetch sorted jobs
+        axios.get('https://jobs-hustle.onrender.com/api/home') // Fetch sorted jobs
             .then((response) => {
                 setJobs(response.data); // Set the jobs in state
             })
