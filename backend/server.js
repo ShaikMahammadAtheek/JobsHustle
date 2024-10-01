@@ -118,13 +118,15 @@ const port = process.env.PORT || 5000;
 const Job = require('./models/job.model');
 
 // Middleware
-app.use(cors());
+// app.use(cors());
+app.use(cors({ origin: 'https://jobshustles.onrender.com' }));
 app.use(express.json());
 app.use(bodyParser.json());
 
 
-const uri = 'mongodb://127.0.0.1:27017/jobportal'; // Use your MongoDB URI here
+// const uri = 'mongodb://127.0.0.1:27017/jobportal'; // Use your MongoDB URI here
 //mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const uri= 'mongodb+srv://mahammadatheek17:64CD3iWJIUMED24C@cluster0.rdkhg.mongodb.net/jobportal'
 mongoose.connect(uri)
 
 const connection = mongoose.connection;
