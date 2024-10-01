@@ -679,7 +679,7 @@ const JobDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`https://jobs-hustle.onrender.com/api/home/${id}`)
+    axios.get(`https://jobshustle-tobl.onrender.com/api/home/${id}`)
       .then(response => {
         setJob(response.data);
         setLoading(false);
