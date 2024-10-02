@@ -226,23 +226,7 @@
   padding-bottom: 50px;   /* Add padding at the bottom to accommodate the fixed button */
 }
 
-.jobss a{
-  position: absolute;     /* Position the link absolutely within the top-card */
-  bottom: 10px;           /* Position it 10px from the bottom of the card */
-  left: 50%;              /* Align the left side at 50% of the width */
-  transform: translateX(-50%); /* Center the button horizontally */
-  color: white;         /* Link color */
-  text-decoration: none;  /* Remove underline */
-  font-weight: bold;      /* Make the text bold */
-  padding: 10px 20px;     /* Add padding for a button-like appearance */
-  background-color: #0080ff; /* Add a background color */
-  border-radius: 5px;     /* Add rounded corners */
-}
 
-.jobss a:hover {
-  background-color: #51a5eb; /* Slightly change background on hover */
-  color: white;         /* Change color on hover */
-}
 
 /*
 .jobss a {
