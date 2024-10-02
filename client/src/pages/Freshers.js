@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import Jobss from '../components/Jobss';
 import '../styles/jobCards.css'; // Import the common CSS for job cards
+import { Link } from 'react-router-dom';
 
 const Freshers = () => {
   const [jobs, setJobs] = useState([]);
