@@ -91,7 +91,7 @@ h1 {
 
 .feedback-form button {
   padding: 10px;
-  background-color: #007bff;
+  background: linear-gradient(to right, #f6356f, #7028e4);
   color: white;
   border: none;
   border-radius: 4px;
@@ -103,7 +103,7 @@ h1 {
 }
 
 .feedback-form button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(to right, #ff004c, #6200ff);
 }
 
 .status-message {
