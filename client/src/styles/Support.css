@@ -80,9 +80,9 @@ h1 {
 .feedback-form textarea {
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #cd3636;
   border-radius: 4px;
-  width: 100%;
+  width: 90%;
 }
 
 .feedback-form textarea {
