@@ -5,7 +5,7 @@ const Footer = () => {
         <footer>
             <div className="footer-logo">
                 <div className="logo"></div>
-                <i>Website Name</i>
+                <i>JobHustle</i>
             </div>
             <div className="footer-links">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
