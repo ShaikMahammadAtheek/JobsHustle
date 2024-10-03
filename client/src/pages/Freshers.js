@@ -32,33 +32,7 @@ const Freshers = () => {
 
 
   
-// <section className="top-components">
-//         <h2 style={{ backgroundColor: 'lightgray' }}>Top Components This Week</h2>
-//         <div className="top-card-grid jobss">
-//           {/* Ensure only the latest 5 jobs are shown */}
-//           {jobs
-//             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))  // Sort jobs by latest first
-//             .slice(0, 5)  // Take the first 5 jobs
-//             .map((job) => (
-//               <div key={job._id} className="top-card">
-//                 {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="job-card-image" />}
-//                 <h1>{job.title}</h1>
-//                 <p className="card-description">
-//                   {job && job.description
-//                     ? (job.description.length > 40
-//                       ? job.description.slice(0, 40) + '...'
-//                       : job.description)
-//                     : "No description available"}
-//                 </p>
-//                 {/*<p>{job.company}</p>*/}
-//                 <p>{job.location}</p>
-//                 <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
-//                 <Link to={`/job/${job._id}`} className="card-link">View Details </Link>
-//               </div>
-//             ))}
-//         </div>
-//         <button onClick={() => window.open('https://youtube.com', '_blank')}>Subscribe</button>
-//       </section>
+
 
 
 
