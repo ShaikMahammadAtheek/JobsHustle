@@ -79,6 +79,16 @@ footer {
     margin-right: 10px;
 }
 
+.footer-name{
+    margin-top:0px ;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #f6356f, #7028e4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
 .footer-links {
     margin-bottom: 1rem;
 }
