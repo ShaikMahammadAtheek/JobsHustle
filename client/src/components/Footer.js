@@ -4,9 +4,10 @@ const Footer = () => {
     return (
         <footer>
             <div className="footer-logo">
-                // <div className="logo"></div>
-        // <div className="logo"></div>
-                // <div ><img src={top} alt="" className="logos" /></div>
+                /* <div className="logo"></div>
+         <div className="logo"></div>
+                 <div ><img src={top} alt="" className="logos" /></div>
+                 */
                 <i className="footer-name">JobHustle</i>
             </div>
             <div className="footer-links">
