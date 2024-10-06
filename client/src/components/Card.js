@@ -45,8 +45,8 @@ const Card = ({ job }) => {
       {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="card-image img-fluid Sets_apart_logo setsail_logo" />}
       <h1 className="card-title">{job.title}
       </h1>
-    <p className="card-company"><b>Hirring Type: </b>{jobDescription.jobType}</p>
-      <p className="card-description">{job.description}...</p>
+    <p className="card-company"> <b>Hirring Type: </b>{jobDescription.jobType}</p>
+      
        {/* <p className="card-description">
         {job && job.description
           ? (job.description.length > 40
