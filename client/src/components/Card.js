@@ -44,10 +44,16 @@ const Card = ({ job }) => {
     <div className="card">
       {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="card-image img-fluid Sets_apart_logo setsail_logo" />}
       <h1 className="card-title">{job.title}
-        <p className="card-company">Hirring Type: {jobDescription.jobType}</p>
       </h1>
+    <p className="card-company"><b>Hirring Type: </b>{jobDescription.jobType}</p>
       <p className="card-description">{job.description}...</p>
-      <p className="card-location">Location: {job.location}</p>
+       {/* <p className="card-description">
+        {job && job.description
+          ? (job.description.length > 40
+            ? job.description.slice(0, 40) + '...'
+            : job.description)
+          : "No description available"}
+      </p> */}
       <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
 
       <Link to={`/job/${job._id}`} className="card-link">View Details</Link>
