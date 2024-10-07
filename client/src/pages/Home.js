@@ -37,7 +37,10 @@ const Home = () => {
     return (
         <div>
             <section className="job-cards">
+            <div>
                 <h1 style={{ textAlign: 'center' }}>All Jobs</h1>
+                <button> Join Telegram</button>
+            </div>
                 <div className="job-grid">
                     {jobs.map((job) => (
                         <Card key={job._id} job={job} />
