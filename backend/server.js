@@ -1,5 +1,206 @@
 
+
+//redis code
+
+
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const redis = require('redis');  // Redis client
+const app = express();
+const port = process.env.PORT || 5000;
+
+// Import the Job model
+const Job = require('./models/job.model');
+
+// Middleware
+app.use(cors({ origin: 'https://jobshustles.onrender.com' }));
+app.use(express.json());
+app.use(bodyParser.json());
+
+// MongoDB connection with connection pooling
+const uri = 'mongodb+srv://mahammadatheek17:64CD3iWJIUMED24C@cluster0.rdkhg.mongodb.net/jobportal';
+mongoose.connect(uri, { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true, 
+  poolSize: 10  // Increase the pool size to speed up multiple connections
+});
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log('MongoDB database connection established successfully');
+});
+
+// Redis client setup
+const redisClient = redis.createClient();
+redisClient.on('error', (err) => console.log('Redis Client Error', err));
+
+(async () => {
+  await redisClient.connect();  // Connect to Redis server
+})();
+
+// Utility function for pagination
+const paginate = (req) => {
+  const limit = parseInt(req.query.limit) || 10;  // Default limit: 10
+  const page = parseInt(req.query.page) || 1;     // Default page: 1
+  return { limit, skip: (page - 1) * limit };
+};
+
+// Middleware to check Redis cache
+const checkCache = async (req, res, next) => {
+  const key = req.originalUrl;
+  const cachedData = await redisClient.get(key);
+  
+  if (cachedData) {
+    console.log('Cache hit');
+    res.send(JSON.parse(cachedData));
+  } else {
+    console.log('Cache miss');
+    next();  // Proceed to the next middleware if no cache is found
+  }
+};
+
+// Route to fetch all jobs (with pagination) and display the newest ones first (for Home page)
+app.get('/api/home', checkCache, async (req, res) => {
+  const { limit, skip } = paginate(req);
+  try {
+    const jobs = await Job.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
+    
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(jobs));  // Cache for 1 hour
+
+    res.json(jobs);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch jobs' });
+  }
+});
+
+// Route to fetch job details by ID
+app.get('/api/home/:id', checkCache, async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id).lean();  // Use .lean()
+
+    if (!job) {
+      return res.status(404).send({ message: 'Job not found' });
+    }
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(job));  // Cache for 1 hour
+
+    res.send(job);
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching job details' });
+  }
+});
+
+// Route to fetch Off Campus jobs (with pagination)
+app.get('/api/offcampus', checkCache, async (req, res) => {
+  const { limit, skip } = paginate(req);
+  try {
+    const offCampusJobs = await Job.find({ jobType: 'OffCampus' }).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(offCampusJobs));  // Cache for 1 hour
+
+    res.json(offCampusJobs);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching OffCampus jobs', error });
+  }
+});
+
+// Route to fetch Internship jobs (with pagination)
+app.get('/api/internships', checkCache, async (req, res) => {
+  const { limit, skip } = paginate(req);
+  try {
+    const internshipJobs = await Job.find({ jobType: 'Internship' }).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(internshipJobs));  // Cache for 1 hour
+
+    res.json(internshipJobs);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching Internship jobs', error });
+  }
+});
+
+// Route to fetch Fresher jobs (with pagination)
+app.get('/api/freshers', checkCache, async (req, res) => {
+  const { limit, skip } = paginate(req);
+  try {
+    const fresherJobs = await Job.find({ jobType: 'Fresher' }).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(fresherJobs));  // Cache for 1 hour
+
+    res.json(fresherJobs);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching Fresher jobs', error });
+  }
+});
+
+// Route to fetch Experience jobs (with pagination)
+app.get('/api/experience', checkCache, async (req, res) => {
+  const { limit, skip } = paginate(req);
+  try {
+    const experienceJobs = await Job.find({ jobType: 'Experience' }).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(experienceJobs));  // Cache for 1 hour
+
+    res.json(experienceJobs);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching Experience jobs', error });
+  }
+});
+
+// Route to get distinct cities
+app.get('/api/cities', checkCache, async (req, res) => {
+  try {
+    const cities = await Job.find().distinct('location');  // Fetch unique city names
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(cities));  // Cache for 1 hour
+
+    res.json(cities);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Route to get jobs by city (with pagination)
+app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
+  const { limit, skip } = paginate(req);
+  try {
+    const city = req.params.city;
+    const jobs = await Job.find({ location: city }).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(jobs));  // Cache for 1 hour
+
+    res.json(jobs);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching jobs by city' });
+  }
+});
+
+// Server listening
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
+});
+
+
+
+
+
+
+
+
+
+
+
 //latest Code
+/*
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -160,13 +361,13 @@ app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
 
+*/
 
 
 
 
 
-
-
+//Main code
 
 /*
 const express = require('express');
