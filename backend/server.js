@@ -1,4 +1,3 @@
-//Radis latest codes
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -6,52 +5,47 @@ const bodyParser = require('body-parser');
 const redis = require('redis');
 const { promisify } = require('util');
 
-// Initialize Redis client
-const redisClient = redis.createClient(); // Redis client
+// Initialize Redis client and promisify Redis commands
+const redisClient = redis.createClient();
 const redisGetAsync = promisify(redisClient.get).bind(redisClient);
 const redisSetAsync = promisify(redisClient.set).bind(redisClient);
 
+// Express app setup
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Import the Job model
-const Job = require('./models/job.model');
-
 // Middleware
-app.use(cors({ origin: 'https://jobshustles.onrender.com' }));
-app.use(express.json());
+app.use(cors());
 app.use(bodyParser.json());
-
-// Add request timeout middleware (60 seconds timeout)
-app.use(function (req, res, next) {
-  req.setTimeout(60000); // 60 seconds timeout
-  next();
-});
 
 // MongoDB connection with connection pooling
 const uri = 'mongodb+srv://mahammadatheek17:64CD3iWJIUMED24C@cluster0.rdkhg.mongodb.net/jobportal';
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  poolSize: 10, // Increase the pool size to speed up multiple connections
+  poolSize: 10, // Increase the pool size for performance
 });
-
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log('MongoDB database connection established successfully');
 });
 
-// Redis client setup and connection handling
+// Redis connection handling
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
-
 (async () => {
   try {
-    await redisClient.connect(); // Connect to Redis server
+    await redisClient.connect();
     console.log('Connected to Redis');
   } catch (err) {
     console.error('Failed to connect to Redis', err);
   }
 })();
+
+// Add request timeout middleware (60 seconds timeout)
+app.use(function (req, res, next) {
+  req.setTimeout(60000); // 60 seconds timeout
+  next();
+});
 
 // Middleware for paginating results
 const paginate = (req) => {
@@ -70,43 +64,15 @@ const checkCache = async (req, res, next) => {
       return res.json(JSON.parse(cachedData)); // Serve data from cache
     }
     console.log('Cache miss');
-    next(); // Proceed to fetch from MongoDB
+    next(); // Proceed to fetch from MongoDB if cache is not found
   } catch (err) {
     console.error('Redis cache error', err);
     next(); // Proceed to fetch from MongoDB if cache fails
   }
 };
 
-// Function to handle Redis caching and job fetching
-const fetchJobsWithCache = async (req, res, jobType) => {
-  const { limit, skip } = paginate(req);
-  const cacheKey = `${jobType}Jobs`; // Unique cache key for each job type
-
-  try {
-    // Check if data is cached in Redis
-    const cachedData = await redisGetAsync(cacheKey);
-    if (cachedData) {
-      console.log(`Serving ${jobType} jobs from Redis cache`);
-      return res.json(JSON.parse(cachedData)); // Send cached data
-    }
-
-    // Fetch data from MongoDB if not in cache
-    const jobs = await Job.find({ jobType }, 'title company location jobType postedDate')
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(limit)
-      .lean();
-
-    // Cache the result in Redis (set expiration to 60 seconds)
-    await redisSetAsync(cacheKey, JSON.stringify(jobs), 'EX', 60);
-
-    // Send the fetched data to the client
-    res.json(jobs);
-  } catch (error) {
-    console.error(`Error fetching ${jobType} jobs`, error);
-    res.status(500).json({ message: `Error fetching ${jobType} jobs`, error });
-  }
-};
+// Job model (Assuming you have defined a Job schema)
+const Job = require('./models/job.model'); // Import your Job model
 
 // Route to fetch all jobs (with pagination) and display the newest ones first (for Home page)
 app.get('/api/home', checkCache, async (req, res) => {
@@ -116,10 +82,10 @@ app.get('/api/home', checkCache, async (req, res) => {
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
-      .lean();
+      .lean(); // Use .lean() for faster performance
 
     // Cache the result in Redis (cache for 1 hour)
-    await redisSetAsync(req.originalUrl, JSON.stringify(jobs), 'EX', 3600); 
+    await redisSetAsync(req.originalUrl, JSON.stringify(jobs), 'EX', 3600);
 
     res.json(jobs);
   } catch (err) {
@@ -138,38 +104,16 @@ app.get('/api/home/:id', checkCache, async (req, res) => {
     }
 
     // Cache the result in Redis (cache for 1 hour)
-    await redisSetAsync(req.originalUrl, JSON.stringify(job), 'EX', 3600); 
+    await redisSetAsync(req.originalUrl, JSON.stringify(job), 'EX', 3600);
 
-    res.send(job);
+    res.json(job);
   } catch (error) {
     console.error('Error fetching job details', error);
     res.status(500).send({ message: 'Error fetching job details' });
   }
 });
 
-// Routes for different job types
-
-// Route to fetch Off Campus jobs
-app.get('/api/offcampus', async (req, res) => {
-  await fetchJobsWithCache(req, res, 'OffCampus');
-});
-
-// Route to fetch Internship jobs
-app.get('/api/internships', async (req, res) => {
-  await fetchJobsWithCache(req, res, 'Internship');
-});
-
-// Route to fetch Fresher jobs
-app.get('/api/freshers', async (req, res) => {
-  await fetchJobsWithCache(req, res, 'Fresher');
-});
-
-// Route to fetch Experience jobs
-app.get('/api/experience', async (req, res) => {
-  await fetchJobsWithCache(req, res, 'Experience');
-});
-
-// Route to get distinct cities
+// Route to fetch distinct cities (for Job By City feature)
 app.get('/api/cities', checkCache, async (req, res) => {
   try {
     const cities = await Job.find().distinct('location');
@@ -184,8 +128,8 @@ app.get('/api/cities', checkCache, async (req, res) => {
   }
 });
 
-// Route to get jobs by city (with pagination)
-app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
+// Route to fetch jobs by city with pagination
+app.get('/api/cities/:city', checkCache, async (req, res) => {
   const { limit, skip } = paginate(req);
   try {
     const city = req.params.city;
@@ -205,10 +149,11 @@ app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
   }
 });
 
-// Server listening
+// Start the Express server
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
+
 
 
 
