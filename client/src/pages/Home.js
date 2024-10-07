@@ -39,7 +39,9 @@ const Home = () => {
             <section className="job-cards">
             <div>
                 <h1 style={{ textAlign: 'center' }}>All Jobs</h1>
-                <button> Join Telegram</button>
+                <a href="https://t.me/Jobs_hustle" target="_blank" rel="noopener noreferrer" className='telegram'>
+                    Join Telegram
+                </a>
             </div>
                 <div className="job-grid">
                     {jobs.map((job) => (
