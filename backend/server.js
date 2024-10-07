@@ -1,5 +1,216 @@
+//Radis latest code
+
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+// Import Redis and Promisify
+const redis = require('redis');
+const client = redis.createClient(); // Redis client
+const { promisify } = require('util');
+const redisGetAsync = promisify(client.get).bind(client);
+const redisSetAsync = promisify(client.set).bind(client);
+
+const app = express();
+const port = process.env.PORT || 5000;
+
+// Import the Job model
+const Job = require('./models/job.model');
+
+// Middleware
+app.use(cors({ origin: 'https://jobshustles.onrender.com' }));
+app.use(express.json());
+app.use(bodyParser.json());
+
+// Add request timeout middleware (60 seconds timeout)
+app.use(function (req, res, next) {
+  req.setTimeout(60000);  // 60 seconds timeout
+  next();
+});
+
+// MongoDB connection with connection pooling
+const uri = 'mongodb+srv://mahammadatheek17:64CD3iWJIUMED24C@cluster0.rdkhg.mongodb.net/jobportal';
+mongoose.connect(uri, { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true, 
+  poolSize: 10  // Increase the pool size to speed up multiple connections
+});
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log('MongoDB database connection established successfully');
+});
+
+// Redis client setup
+const redisClient = redis.createClient();
+redisClient.on('error', (err) => console.log('Redis Client Error', err));
+
+(async () => {
+  await redisClient.connect();  // Connect to Redis server
+})();
+
+// Middleware for paginating results
+const paginate = (req) => {
+  const limit = parseInt(req.query.limit) || 10;
+  const skip = parseInt(req.query.skip) || 0;
+  return { limit, skip };
+};
+
+// Middleware to check Redis cache
+const checkCache = async (req, res, next) => {
+  const key = req.originalUrl;
+  const cachedData = await redisClient.get(key);
+  
+  if (cachedData) {
+    console.log('Cache hit');
+    res.send(JSON.parse(cachedData));
+  } else {
+    console.log('Cache miss');
+    next();  // Proceed to the next middleware if no cache is found
+  }
+};
 
 
+// Function to handle Redis caching and job fetching
+const fetchJobsWithCache = async (req, res, jobType) => {
+  const { limit, skip } = paginate(req);
+  const cacheKey = `${jobType}Jobs`; // Unique cache key for each job type
+
+  try {
+    // Check if data is cached in Redis
+    const cachedData = await redisGetAsync(cacheKey);
+    if (cachedData) {
+      console.log(`Serving ${jobType} jobs from Redis cache`);
+      return res.json(JSON.parse(cachedData)); // Send cached data
+    }
+
+    // Fetch data from MongoDB if not in cache
+    const jobs = await Job.find({ jobType }, 'title company location jobType postedDate')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
+
+    // Cache the result in Redis (set expiration to 60 seconds)
+    await redisSetAsync(cacheKey, JSON.stringify(jobs), 'EX', 60);
+
+    // Send the fetched data to the client
+    res.json(jobs);
+  } catch (error) {
+    res.status(500).json({ message: `Error fetching ${jobType} jobs`, error });
+  }
+};
+
+
+
+// Route to fetch all jobs (with pagination) and display the newest ones first (for Home page)
+app.get('/api/home', checkCache, async (req, res) => {
+  const { limit, skip } = paginate(req);
+  try {
+    const jobs = await Job.find({}, 'title company location jobType postedDate').sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
+    
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(jobs));  // Cache for 1 hour
+
+    res.json(jobs);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch jobs' });
+  }
+});
+
+// Route to fetch job details by ID
+app.get('/api/home/:id', checkCache, async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id).lean();  // Use .lean()
+
+    if (!job) {
+      return res.status(404).send({ message: 'Job not found' });
+    }
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(job));  // Cache for 1 hour
+
+    res.send(job);
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching job details' });
+  }
+});
+
+
+// Routes for different job types
+
+// Route to fetch Off Campus jobs
+app.get('/api/offcampus', async (req, res) => {
+  await fetchJobsWithCache(req, res, 'OffCampus');
+});
+
+// Route to fetch Internship jobs
+app.get('/api/internships', async (req, res) => {
+  await fetchJobsWithCache(req, res, 'Internship');
+});
+
+// Route to fetch Fresher jobs
+app.get('/api/freshers', async (req, res) => {
+  await fetchJobsWithCache(req, res, 'Fresher');
+});
+
+// Route to fetch Experience jobs
+app.get('/api/experience', async (req, res) => {
+  await fetchJobsWithCache(req, res, 'Experience');
+});
+
+// Route to get distinct cities
+app.get('/api/cities', checkCache, async (req, res) => {
+  try {
+    const cities = await Job.find().distinct('location');  // Fetch unique city names
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(cities));  // Cache for 1 hour
+
+    res.json(cities);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Route to get jobs by city (with pagination)
+app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
+  const { limit, skip } = paginate(req);
+  try {
+    const city = req.params.city;
+    const jobs = await Job.find({ location: city }).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
+
+    // Cache the result in Redis
+    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(jobs));  // Cache for 1 hour
+
+    res.json(jobs);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching jobs by city' });
+  }
+});
+
+// Server listening
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 //redis code
 
 
@@ -188,7 +399,7 @@ app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-
+*/
 
 
 
