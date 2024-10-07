@@ -1,4 +1,4 @@
-/*
+
 
 //redis code
 
@@ -189,7 +189,6 @@ app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
 
-*/
 
 
 
@@ -198,7 +197,7 @@ app.listen(port, () => {
 
 
 
-
+/*
 //latest Code
 
 const express = require('express');
@@ -360,7 +359,7 @@ app.get('/api/notifications', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-
+*/
 
 
 
