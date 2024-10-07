@@ -1,4 +1,8 @@
-//Redies latest
+
+
+
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -14,12 +18,6 @@ const Job = require('./models/job.model');
 app.use(cors({ origin: 'https://jobshustles.onrender.com' }));
 app.use(express.json());
 app.use(bodyParser.json());
-
-// Add request timeout middleware (60 seconds timeout)
-app.use(function (req, res, next) {
-  req.setTimeout(60000);  // 60 seconds timeout
-  next();
-});
 
 // MongoDB connection with connection pooling
 const uri = 'mongodb+srv://mahammadatheek17:64CD3iWJIUMED24C@cluster0.rdkhg.mongodb.net/jobportal';
@@ -97,14 +95,11 @@ app.get('/api/home/:id', checkCache, async (req, res) => {
 });
 
 // Route to fetch Off Campus jobs (with pagination)
-// Route to fetch Off Campus jobs (with pagination)
 app.get('/api/offcampus', checkCache, async (req, res) => {
   const { limit, skip } = paginate(req);
   try {
-    const offCampusJobs = await Job.find(
-      { jobType: 'OffCampus' }, 
-      'title company location jobType postedDate'  // Select only these fields
-    ).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();
+    const offCampusJobs = await Job.find({ jobType: 'OffCampus' }, 
+      'title company location jobType postedDate').sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
 
     // Cache the result in Redis
     await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(offCampusJobs));  // Cache for 1 hour
@@ -119,10 +114,8 @@ app.get('/api/offcampus', checkCache, async (req, res) => {
 app.get('/api/internships', checkCache, async (req, res) => {
   const { limit, skip } = paginate(req);
   try {
-    const internshipJobs = await Job.find(
-      { jobType: 'Internship' }, 
-      'title company location jobType postedDate'  // Select only these fields
-    ).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();
+    const internshipJobs = await Job.find({ jobType: 'Internship' }, 
+      'title company location jobType postedDate').sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
 
     // Cache the result in Redis
     await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(internshipJobs));  // Cache for 1 hour
@@ -137,10 +130,8 @@ app.get('/api/internships', checkCache, async (req, res) => {
 app.get('/api/freshers', checkCache, async (req, res) => {
   const { limit, skip } = paginate(req);
   try {
-    const fresherJobs = await Job.find(
-      { jobType: 'Fresher' }, 
-      'title company location jobType postedDate'  // Select only these fields
-    ).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();
+    const fresherJobs = await Job.find({ jobType: 'Fresher' }, 
+      'title company location jobType postedDate').sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
 
     // Cache the result in Redis
     await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(fresherJobs));  // Cache for 1 hour
@@ -155,10 +146,8 @@ app.get('/api/freshers', checkCache, async (req, res) => {
 app.get('/api/experience', checkCache, async (req, res) => {
   const { limit, skip } = paginate(req);
   try {
-    const experienceJobs = await Job.find(
-      { jobType: 'Experience' }, 
-      'title company location jobType postedDate'  // Select only these fields
-    ).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();
+    const experienceJobs = await Job.find({ jobType: 'Experience' }, 
+      'title company location jobType postedDate').sort({ createdAt: -1 }).skip(skip).limit(limit).lean();  // Use .lean()
 
     // Cache the result in Redis
     await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(experienceJobs));  // Cache for 1 hour
@@ -168,7 +157,6 @@ app.get('/api/experience', checkCache, async (req, res) => {
     res.status(500).json({ message: 'Error fetching Experience jobs', error });
   }
 });
-
 
 // Route to get distinct cities
 app.get('/api/cities', checkCache, async (req, res) => {
@@ -204,10 +192,6 @@ app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-
-
-
-
 
 
 
