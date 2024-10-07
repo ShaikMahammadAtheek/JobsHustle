@@ -2,7 +2,7 @@
 
 
 
-
+/*
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -194,6 +194,7 @@ app.listen(port, () => {
 });
 
 
+*/
 
 
 
@@ -205,7 +206,6 @@ app.listen(port, () => {
 
 
 
-/*
 //redis code
 
 
@@ -394,7 +394,7 @@ app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-*/
+
 
 
 
