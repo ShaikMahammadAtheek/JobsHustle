@@ -1,0 +1,12 @@
+/* Spinner.css */
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+}
+
+.loading {
+  font-size: 24px; /* Adjust size as needed */
+  color: #333; /* Customize color */
+}
