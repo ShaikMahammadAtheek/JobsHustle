@@ -15,39 +15,48 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../components/Card'; // Assuming you have a Card component
+import Spinner from '../components/Spinner'; // Import your Spinner component
 import '../styles/Home.css';
 import './Home.css';
 import { Link } from 'react-router-dom';
 
-
 const Home = () => {
     const [jobs, setJobs] = useState([]);
+    const [loading, setLoading] = useState(true); // Initialize loading state
 
     useEffect(() => {
-        axios.get('https://jobs-hustle.onrender.com/api/home') // Fetch sorted jobs
-            .then((response) => {
+        const fetchJobs = async () => {
+            try {
+                setLoading(true); // Set loading to true before fetching
+                const response = await axios.get('https://jobs-hustle.onrender.com/api/home'); // Fetch sorted jobs
                 setJobs(response.data); // Set the jobs in state
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error('Error fetching jobs:', error);
                 alert('Could not fetch jobs, please try again later.');
-            });
+            } finally {
+                setLoading(false); // Set loading to false after fetching
+            }
+        };
+
+        fetchJobs();
     }, []);
 
     return (
         <div>
             <section className="job-cards">
-            <div>
-                <h1 style={{ textAlign: 'center' }}>All Jobs</h1>
-             
-            </div>
-                <div className="job-grid">
-                    {jobs.map((job) => (
-                        <Card key={job._id} job={job} />
-                    ))}
+                <div>
+                    <h1 style={{ textAlign: 'center' }}>All Jobs</h1>
                 </div>
+                {loading ? ( // Conditional rendering based on loading state
+                    <Spinner /> // Show spinner while loading
+                ) : (
+                    <div className="job-grid">
+                        {jobs.map((job) => (
+                            <Card key={job._id} job={job} />
+                        ))}
+                    </div>
+                )}
             </section>
-
 
             <section className="top-components">
                 <h2 style={{ backgroundColor: 'lightgray' }}>Top Components This Week</h2>
@@ -61,21 +70,20 @@ const Home = () => {
                                 {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="job-card-image" />}
                                 <h1>{job.title}</h1>
                                 <p>{job.description}</p>
-                                {/*<p>{job.company}</p>*/}
                                 <p>{job.location}</p>
                                 <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
-                                <Link to={`/job/${job._id}`} className="card-link">View Details </Link>
+                                <Link to={`/job/${job._id}`} className="card-link">View Details</Link>
                             </div>
                         ))}
                 </div>
                 <button onClick={() => window.open('https://youtube.com', '_blank')}>Subscribe</button>
             </section>
-
         </div>
     );
 };
 
 export default Home;
+
 
 
 
