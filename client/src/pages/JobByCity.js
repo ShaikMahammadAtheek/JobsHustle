@@ -44,55 +44,49 @@ export default JobByCity;
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-// import { Link } from 'react-router-dom';
-//import Card from '../components/Card'; // Assuming you have a Card component for job display
 import Jobss from '../components/Jobss';
+import Spinner from '../components/Spinner'; // Import your Spinner component
+
 const JobByCity = () => {
   const { city } = useParams(); // Get city from URL
   const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true); // Initialize loading state
 
   useEffect(() => {
-    axios.get(`https://jobs-hustle.onrender.com/api/job-by-city/${city}`)
-      .then(response => setJobs(response.data))
-      .catch(error => console.error('Error fetching jobs:', error));
+    const fetchJobs = async () => {
+      try {
+        setLoading(true); // Set loading to true before fetching
+        const response = await axios.get(`https://jobs-hustle.onrender.com/api/job-by-city/${city}`); // Fetch jobs by city
+        setJobs(response.data); // Set jobs with response data
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+        alert('Could not fetch jobs, please try again later.'); // Optional alert for error handling
+      } finally {
+        setLoading(false); // Set loading to false after fetching
+      }
+    };
+
+    fetchJobs(); // Call the fetch function
   }, [city]);
 
   return (
     <div>
       <h1>Jobs in {city}</h1>
-      <div className="job-list">
-
-        {jobs.map(job => (
-       <Jobss key={job._id} job={job}/>
-       
-        ))}
-      </div>
-
-
-
-  
-
-
-
-
-
-
-
-
-
-      {/*
-      <div className="job-grid">
-        {jobs.map(job => (
-          <Card key={job._id} job={job} />
-        ))}
-      </div>
-    
-    */}
+      {loading ? ( // Conditional rendering based on loading state
+        <Spinner /> // Show spinner while loading
+      ) : (
+        <div className="job-list">
+          {jobs.map(job => (
+            <Jobss key={job._id} job={job} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 export default JobByCity;
+
 
 
 
