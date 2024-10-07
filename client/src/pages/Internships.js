@@ -2,58 +2,47 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/jobCards.css'; // Import the common CSS for job cards
 import Jobss from '../components/Jobss';
-import { Link } from 'react-router-dom';
+import Spinner from '../components/Spinner'; // Import your Spinner component
 
 const Internships = () => {
   const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true); // Initialize loading state
 
   useEffect(() => {
-    axios.get('https://jobs-hustle.onrender.com/api/internships')  // Make sure the API URL is correct
-      .then((response) => {
-        setJobs(response.data);  // Update jobs with response data
-      })
-      .catch((error) => {
+    const fetchJobs = async () => {
+      try {
+        setLoading(true); // Set loading to true before fetching
+        const response = await axios.get('https://jobs-hustle.onrender.com/api/internships'); // Fetch internships
+        setJobs(response.data); // Update jobs with response data
+      } catch (error) {
         console.error('Error fetching internships:', error);
         alert('Could not fetch internships, please try again later.');
-      });
+      } finally {
+        setLoading(false); // Set loading to false after fetching
+      }
+    };
+
+    fetchJobs(); // Call the fetch function
   }, []);
 
   return (
     <div>
       <h1>Internships</h1>
-      <div className="job-list">
-
-        {jobs.map(job => (
-          <Jobss key={job._id} job={job} />
-
-        ))}
-      </div>
-
-
-
-
-
-
-
-      {/*
-      <div className="job-list">
-        {jobs.map(job => (
-          <div key={job._id} className="job-card">
-            <h2>{job.title}</h2>
-            <p>{job.company}</p>
-            <p>{job.location}</p>
-            <p>{job.description}</p>
-            {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="job-card-image" />}
-          </div>
-        ))}
-      </div>
-      */}
-
+      {loading ? ( // Conditional rendering based on loading state
+        <Spinner /> // Show spinner while loading
+      ) : (
+        <div className="job-list">
+          {jobs.map(job => (
+            <Jobss key={job._id} job={job} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 export default Internships;
+
 
 
 
