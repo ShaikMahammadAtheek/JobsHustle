@@ -170,7 +170,20 @@ button:hover {
     border-radius: 4px;
     border: 1px solid #ddd;
 }
-
+.telegram {
+    left: 0px;
+    text-decoration: none;
+    background-color: rgb(47, 47, 246);
+    color: black;
+    margin-left: 1313px;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.telegram:hover{
+    background-color: rgb(72, 72, 246);
+}
 /* Responsive Design */
 @media (max-width: 1024px) {
     .top-card-grid {
