@@ -1,5 +1,5 @@
 /* Latest Redis code */
-
+/*
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -204,7 +204,7 @@ app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-
+*/
 
 
 
@@ -416,7 +416,7 @@ app.listen(port, () => {
 
 //redis code
 //this is now checking
-/*
+
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -603,7 +603,7 @@ app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-*/
+
 
 
 
