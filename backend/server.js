@@ -439,7 +439,7 @@ const uri = 'mongodb+srv://mahammadatheek17:64CD3iWJIUMED24C@cluster0.rdkhg.mong
 mongoose.connect(uri, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true, 
-  poolSize: 10  // Increase the pool size to speed up multiple connections
+ maxPoolSize: 10 // Increase the pool size to speed up multiple connections
 });
 
 const connection = mongoose.connection;
