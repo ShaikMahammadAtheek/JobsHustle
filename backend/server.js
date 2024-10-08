@@ -1,4 +1,4 @@
-/* Latest Redis code */
+/* Latest Redis code   X*/  
 /*
 const express = require('express');
 const mongoose = require('mongoose');
@@ -414,10 +414,10 @@ app.listen(port, () => {
 
 
 
-//redis code
+//redis code  X
 //this is now checking
 
-
+/*
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -605,13 +605,13 @@ app.listen(port, () => {
 });
 
 
+*/
 
 
 
 
 
 
-/*
 //latest Code
 
 const express = require('express');
@@ -773,7 +773,6 @@ app.get('/api/notifications', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-*/
 
 
 
