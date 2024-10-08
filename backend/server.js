@@ -410,7 +410,7 @@ app.listen(port, () => {
 
 
 
-/*
+
 
 
 
@@ -604,7 +604,6 @@ app.listen(port, () => {
 });
 
 
-*/
 
 
 
@@ -818,7 +817,7 @@ app.listen(port, () => {
 
 
 //Main code
-
+/*
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -1002,7 +1001,7 @@ app.listen(port, () => {
 });
 
 
-
+*/
 
 
 
