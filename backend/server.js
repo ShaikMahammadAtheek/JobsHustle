@@ -1,5 +1,5 @@
 /* Latest Redis code */
-/*
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -27,7 +27,7 @@ const uri = 'mongodb+srv://mahammadatheek17:64CD3iWJIUMED24C@cluster0.rdkhg.mong
 mongoose.connect(uri, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true, 
-  poolSize: 10  // Increase the pool size to speed up multiple connections
+  maxPoolSize: 10  // Increase the pool size to speed up multiple connections
 });
 
 const connection = mongoose.connection;
@@ -205,7 +205,7 @@ app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
 
-*/
+
 
 
 
@@ -416,7 +416,7 @@ app.listen(port, () => {
 
 //redis code
 //this is now checking
-
+/*
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -603,7 +603,7 @@ app.get('/api/job-by-city/:city', checkCache, async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-
+*/
 
 
 
