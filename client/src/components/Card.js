@@ -34,10 +34,33 @@ export default Card;
 
 //Main code
 
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import '../styles/Card.css';
+// import './Card.css';
+
+// const Card = ({ job }) => {
+//   const jobDescription = job.jobDescription || {};
+//   return (
+//     <div className="card">
+//       {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="card-image img-fluid Sets_apart_logo setsail_logo" />}
+//       <h1 className="card-title">{job.title}
+//       </h1>
+//     <p className="card-company"> <b>Hirring Type: </b>{jobDescription.jobType}</p>
+      
+//       <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
+
+//       <Link to={`/job/${job._id}`} className="card-link">View Details</Link>
+//     </div>
+//   );
+// };
+
+// export default Card;
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Card.css';
-
+// import '../styles/Card.css';
+import './Card.css';
 const Card = ({ job }) => {
   const jobDescription = job.jobDescription || {};
   return (
@@ -45,23 +68,75 @@ const Card = ({ job }) => {
       {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="card-image img-fluid Sets_apart_logo setsail_logo" />}
       <h1 className="card-title">{job.title}
       </h1>
-    <p className="card-company"> <b>Hirring Type: </b>{jobDescription.jobType}</p>
-      
-       {/* <p className="card-description">
+
+      <p className="card-company"><b>Hirring Type:</b> {jobDescription.jobType}</p>
+      {/* <p className="card-description">
         {job && job.description
           ? (job.description.length > 40
             ? job.description.slice(0, 40) + '...'
             : job.description)
           : "No description available"}
       </p> */}
+
+      <p className="card-location">Location: {job.location}</p>
       <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
 
-      <Link to={`/job/${job._id}`} className="card-link">View Details</Link>
+      <Link to={`/job/${job._id}`} className="card-link cardbutton">View Details</Link>
     </div>
   );
 };
 
 export default Card;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
