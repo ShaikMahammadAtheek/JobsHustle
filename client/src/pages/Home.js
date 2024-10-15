@@ -3,6 +3,57 @@
 
 
 */
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Card from '../components/Card'; // Assuming you have a Card component
+// import '../styles/Home.css';
+import Spinner from '../components/Spinner';
+import './Homes.css';
+import { Link } from 'react-router-dom';
+
+
+const Home = () => {
+    const [jobs, setJobs] = useState([]);
+    const [loading, setLoading] = useState(true); // Initialize loading state
+
+    useEffect(() => {
+        const fetchJobs = async () => {
+            try {
+                setLoading(true); // Set loading to true before fetching
+                const response = await axios.get('https://jobs-hustle.onrender.com/api/home'); // Fetch sorted jobs
+                setJobs(response.data); // Set the jobs in state
+            } catch (error) {
+                console.error('Error fetching jobs:', error);
+                alert('Could not fetch jobs, please try again later.');
+            } finally {
+                setLoading(false); // Set loading to false after fetching
+            }
+        };
+
+        fetchJobs();
+    }, []);
+
+    return (
+        <div>
+            <section className="job-cards">
+                <div>
+                    <h1 style={{ textAlign: 'center' }}>All Jobs</h1>
+                </div>
+                {loading ? ( // Conditional rendering based on loading state
+                    <Spinner /> // Show spinner while loading
+                ) : (
+                    <div className="carts">
+                        {jobs.map((job) => (
+                            <Card key={job._id} job={job} />
+                        ))}
+                    </div>
+                )}
+            </section>
+                    
+        </div>
+    );
+};
+export default Home;
 
 
 
@@ -10,8 +61,8 @@
 
 
 
-
-//trail code
+//Main code
+/*
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../components/Card'; // Assuming you have a Card component
@@ -61,7 +112,6 @@ const Home = () => {
             <section className="top-components">
                 <h2 style={{ backgroundColor: 'lightgray' }}>Top Components This Week</h2>
                 <div className="top-card-grid jobss">
-                    {/* Ensure only the latest 5 jobs are shown */}
                     {jobs
                         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))  // Sort jobs by latest first
                         .slice(0, 5)  // Take the first 5 jobs
@@ -83,6 +133,34 @@ const Home = () => {
 };
 
 export default Home;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
