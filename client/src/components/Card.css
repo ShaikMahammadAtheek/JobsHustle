@@ -23,7 +23,7 @@
   background: var(--radial-gradient);
   color: white;
   transform: translateY(-10px);
-  background-color: rgb(13, 27, 42)
+  background-color: red;
 }
 
 /* Image container with fixed height */
