@@ -16,8 +16,14 @@
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  /*transform: translateY(-10px);
   color:white;
+  */
+  color: var(--white);
+  background: var(--radial-gradient);
+  color: white;
+  transform: translateY(-10px);
+  background-color: rgb(13, 27, 42)
 }
 
 /* Image container with fixed height */
