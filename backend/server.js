@@ -382,7 +382,7 @@ app.listen(port, () => {
 
 
 /*  Currently Using and Working */
-
+/*
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -573,7 +573,7 @@ app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
 
-
+*/
 
 
 
@@ -784,7 +784,7 @@ app.listen(port, () => {
 
 
 //latest Code  Working --W
-/*
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -944,7 +944,6 @@ app.get('/api/notifications', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-*/
 
 
 
