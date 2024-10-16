@@ -17,6 +17,7 @@
 
 .card:hover {
   transform: translateY(-10px);
+  color:white;
 }
 
 /* Image container with fixed height */
