@@ -59,8 +59,8 @@ export default Card;
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import '../styles/Card.css';
-import './Card.css';
+import '../styles/Card.css';
+//import './Card.css';
 const Card = ({ job }) => {
   const jobDescription = job.jobDescription || {};
   return (
