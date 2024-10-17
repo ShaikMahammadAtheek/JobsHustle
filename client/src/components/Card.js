@@ -80,8 +80,9 @@ const Card = ({ job }) => {
 
       <p className="card-location">Location: {job.location}</p>
       <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
-
+    {/*
       <Link to={`/job/${job._id}`} className="card-link cardbutton">View Details</Link>
+      */}
     </div>
   );
 };
