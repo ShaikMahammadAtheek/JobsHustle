@@ -65,6 +65,7 @@ const Card = ({ job }) => {
   const jobDescription = job.jobDescription || {};
   return (
     <div className="card">
+      <Link to={`/job/${job._id}`}
       {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="card-image img-fluid Sets_apart_logo setsail_logo" />}
       <h1 className="card-title">{job.title}
       </h1>
@@ -83,6 +84,7 @@ const Card = ({ job }) => {
     {/*
       <Link to={`/job/${job._id}`} className="card-link cardbutton">View Details</Link>
       */}
+    </Link>
     </div>
   );
 };
