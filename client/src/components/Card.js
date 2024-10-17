@@ -65,7 +65,7 @@ const Card = ({ job }) => {
   const jobDescription = job.jobDescription || {};
   return (
     <div className="card">
-      <Link to={`/job/${job._id}`} className="card-link cardbutton">
+      
       {job.imageUrl && <img src={job.imageUrl} alt={job.title} className="card-image img-fluid Sets_apart_logo setsail_logo" />}
       <h1 className="card-title">{job.title}
       </h1>
@@ -81,10 +81,10 @@ const Card = ({ job }) => {
 
       <p className="card-location">Location: {job.location}</p>
       <h1>{job.walkInDate && <p className="card-date">{new Date(job.walkInDate).toLocaleDateString()}</p>}</h1>
-    {/*
+    
       <Link to={`/job/${job._id}`} className="card-link cardbutton">View Details</Link>
-      */}
-    </Link>
+      
+    
     </div>
   );
 };
