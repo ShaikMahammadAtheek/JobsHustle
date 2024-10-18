@@ -11,7 +11,7 @@ const Experience = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true); // Set loading to true before fetching
-        const response = await axios.get('astik-production.up.railway.app/api/experience'); // Ensure the API URL is correct
+        const response = await axios.get('https://jobs-hustle.onrender.com/api/experience'); // Ensure the API URL is correct
         setJobs(response.data); // Update jobs with response data
       } catch (error) {
         console.error('Error fetching experience jobs:', error);
