@@ -99,7 +99,7 @@
     }
 
     .job-group-cards {
-        grid-template-columns: 1fr; /* Single column for mobile */
+        grid-template-columns: repeat(1, 1fr);; /* Single column for mobile */
     }
 }
 
