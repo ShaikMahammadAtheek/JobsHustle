@@ -404,7 +404,7 @@ const Navbar = () => {
             <li>
                 {/*<Link to="/support" ><button className="enquiry-button sizeofbutton "onClick={toggleMobileMenu} >Send Query →</button></Link>*/}
               {/*<button className="enquiry-button mobile-enquiry"  >Send Enquiry →</button> */}
-                <Link to="https://t.me/Jobs_hustle" ><button className="enquiry-button sizeofbutton "onClick={toggleMobileMenu} >Send Query →</button></Link>
+                <Link to="https://t.me/Jobs_hustle", '_blank' ><button className="enquiry-button sizeofbutton "onClick={toggleMobileMenu} >Join With Us →</button></Link>
             </li>
           </ul>
         </ul>
