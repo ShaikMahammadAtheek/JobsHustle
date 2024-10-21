@@ -58,10 +58,12 @@ const Home = () => {
             </Link>
             <div className="job-group-cards">
                 {groupedJobs[jobType].map((job) => (
+                 <Link to={`/job/${job._id}`} className='HomesJobidLink'>
                     <div key={job._id} className="job-card">
                         <img src={job.imageUrl} alt={job.title} className="job-image" />
                         <h3 className="job-title">{job.title}</h3>
                     </div>
+                 </Link>
                 ))}
             </div>
         </div>
