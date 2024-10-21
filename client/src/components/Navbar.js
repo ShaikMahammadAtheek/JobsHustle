@@ -348,7 +348,9 @@ const Navbar = () => {
       </div>
 
       <div className={`navbar-enquiry  ${isMenuOpen ? 'hide-enquiry' : ''}`}>
-        <Link to="/support" ><button className="enquiry-button sizeofbutton " >Send Query →</button></Link>
+{/*<Link to="/support" ><button className="enquiry-button sizeofbutton " >Send Query →</button></Link>*/}
+<Link to="https://t.me/Jobs_hustle" ><button className="enquiry-button sizeofbutton " >Send Query →</button></Link>
+
         
       </div>
 
@@ -400,8 +402,9 @@ const Navbar = () => {
             </li>
             <li><Link to="/support" onClick={toggleMobileMenu}>Support</Link></li>
             <li>
-            <Link to="/support" ><button className="enquiry-button sizeofbutton "onClick={toggleMobileMenu} >Send Query →</button></Link>
+                {/*<Link to="/support" ><button className="enquiry-button sizeofbutton "onClick={toggleMobileMenu} >Send Query →</button></Link>*/}
               {/*<button className="enquiry-button mobile-enquiry"  >Send Enquiry →</button> */}
+                <Link to="https://t.me/Jobs_hustle" ><button className="enquiry-button sizeofbutton "onClick={toggleMobileMenu} >Send Query →</button></Link>
             </li>
           </ul>
         </ul>
