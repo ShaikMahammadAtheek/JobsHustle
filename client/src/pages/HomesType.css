@@ -72,7 +72,7 @@
 }
 
 .job-group-heading {
-    background-color: #007bff; /* Blue background for the header */
+    background-color: #171614;  /* Blue background for the header */
     color: white;
     padding: 15px 20px;
     font-size: 1.5rem;
@@ -84,7 +84,7 @@
 
 /* Hover effect for job group heading */
 .job-group-heading-link:hover .job-group-heading {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #171614;  /* Darker blue on hover */
     cursor: pointer;
 }
 
