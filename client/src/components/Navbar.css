@@ -581,7 +581,7 @@
 .enquiry-button {
   margin-top:0px ;
   padding: 10px 10px;
-  background: linear-gradient(to right, #f6356f, #7028e4);
+  background: linear-gradient(to right, #2406e8, #1f07fa);
   border: none;
   color: white;
   border-radius: 20px;
@@ -591,7 +591,7 @@
 }
 
 .enquiry-button:hover {
-  background: linear-gradient(to right, #e82e56, #5d22c9);
+  background: linear-gradient(to right, #2f1aec, #2229eb);
 }
 
 
