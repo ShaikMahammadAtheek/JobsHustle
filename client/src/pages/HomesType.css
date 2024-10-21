@@ -1,0 +1,118 @@
+/* Main section container */
+.grouped-job-cards {
+    margin: 40px 0;
+}
+
+/* Job group container */
+.job-group {
+    margin-bottom: 40px;
+}
+
+/* Heading for job group */
+.job-group-heading {
+    background-color: #141517; /* Blue background for the header */
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    text-align: left;
+    border-radius: 5px 5px 0 0;
+    margin: 0;
+}
+
+/* Job cards container */
+.job-group-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 0 0 5px 5px;
+}
+
+/* Each job card */
+.job-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.job-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Image in the job card */
+.job-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-height: 150px; /* Limiting image height */
+    object-fit: cover; /* Ensures image fits within the card */
+}
+
+/* Job title */
+.job-title {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
+
+
+/* Job group heading as a link */
+.job-group-heading-link {
+    text-decoration: none; /* Removes default link underline */
+    color: inherit; /* Inherits text color */
+}
+
+.job-group-heading {
+    background-color: #007bff; /* Blue background for the header */
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    text-align: left;
+    border-radius: 5px 5px 0 0;
+    margin: 0;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for job group heading */
+.job-group-heading-link:hover .job-group-heading {
+    background-color: #0056b3; /* Darker blue on hover */
+    cursor: pointer;
+}
+
+
+/* Responsive Media Queries */
+
+/* Mobile (up to 600px) */
+@media (max-width: 600px) {
+    .job-group-heading {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .job-group-cards {
+        grid-template-columns: 1fr; /* Single column for mobile */
+    }
+}
+
+/* Tablet (600px to 1024px) */
+@media (max-width: 1024px) {
+    .job-group-cards {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on tablet */
+    }
+}
+
+/* Desktop (above 1024px) */
+@media (min-width: 1025px) {
+    .job-group-cards {
+        grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+    }
+}
