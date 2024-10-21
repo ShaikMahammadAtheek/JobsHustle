@@ -349,7 +349,7 @@ const Navbar = () => {
 
       <div className={`navbar-enquiry  ${isMenuOpen ? 'hide-enquiry' : ''}`}>
 {/*<Link to="/support" ><button className="enquiry-button sizeofbutton " >Send Query →</button></Link>*/}
-<Link to="https://t.me/Jobs_hustle" target='_blank' ><button className="enquiry-button sizeofbutton " >Join With Us → →</button></Link>
+<Link to="https://t.me/Jobs_hustle" target='_blank' ><button className="enquiry-button sizeofbutton " >Join With Us →</button></Link>
 
         
       </div>
