@@ -43,7 +43,4 @@ h1 {
     .cards {
         justify-content: center; /* Center cards on small screens */
     }
-    .card {
-        width: 90%; /* Adjust card width for smaller screens */
-    }
 }
