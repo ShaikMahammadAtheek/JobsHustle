@@ -841,8 +841,7 @@ app.get('/api/home', async (req, res) => {
 });
 
 
-// Routes
-app.use(jobRoutes);
+
 
 // Route to fetch job details by ID
 app.get('/api/home/:id', async (req, res) => {
