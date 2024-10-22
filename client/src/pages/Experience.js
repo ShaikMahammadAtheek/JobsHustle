@@ -30,6 +30,11 @@ const Experience = () => {
       {loading ? ( // Conditional rendering based on loading state
         <Spinner /> // Show spinner while loading
       ) : (
+        <div className="carts">
+                    {jobs.map((job) => (
+                        <Card key={job._id} job={job} />
+                    ))}
+                </div>
         <div className="job-list">
           {jobs.map(job => (
             <Jobss key={job._id} job={job} />
