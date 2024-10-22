@@ -20,6 +20,16 @@ const App = () => {
     <div className='bgcol'>
     <Router >
       <Navbar />
+    <div className="whatteli">
+                <a href="https://whatsapp.com/channel/0029VajnMvaKWEKzCKLMt40P" target="_blank" rel="noopener noreferrer" className='what'>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Facebook" className='whatimg' />
+                </a>
+                
+                <a href="https://t.me/Jobs_hustle" target="_blank" rel="noopener noreferrer" className='teli'>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Instagram" className='teliimg' />
+                </a>
+      </div>
+      <h1 style={{"color":"red"}} id='mainhomeheading'>Let's Begin Your Carear From Here!...</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/job/:id" element={<JobDetails />} />
