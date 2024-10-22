@@ -13,6 +13,7 @@ import Experience from './pages/Experience';
 import JobByCity from './pages/JobByCity';  //fire and safty
 import Support from './pages/Support';
 import JobDetails from './pages/JobDetails';
+import './App.css'; 
 
 //<Route path="/job/:id" element={<JobNotification />} />
 const App = () => {
