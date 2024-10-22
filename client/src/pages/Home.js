@@ -1,5 +1,5 @@
 // Fresher Voice code ...
-/*
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../components/Card'; // Assuming you have a Card component
@@ -80,13 +80,13 @@ const Home = () => {
 };
 
 export default Home;
-*/
 
 
 
 
 
 
+/*
 // latest Main Code....
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -140,7 +140,7 @@ const Home = () => {
 };
 export default Home;
 
-
+*/
 
 
 
