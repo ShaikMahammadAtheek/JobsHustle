@@ -10,7 +10,7 @@
 
 /* Heading for job group */
 .job-group-heading {
-    background-color: #171614; /* Blue background for the header */
+    background-color: #171614; /* Dark background for the header */
     color: white;
     padding: 15px 20px;
     font-size: 1.5rem;
@@ -27,6 +27,8 @@
     padding: 20px;
     background-color: #f8f9fa; /* Light background */
     border-radius: 0 0 5px 5px;
+    justify-items: center; /* Center items horizontally */
+    align-items: center;   /* Center items vertically */
 }
 
 /* Each job card */
@@ -64,7 +66,6 @@
     font-weight: bold;
 }
 
-
 /* Job group heading as a link */
 .job-group-heading-link {
     text-decoration: none; /* Removes default link underline */
@@ -72,7 +73,7 @@
 }
 
 .job-group-heading {
-    background-color: #171614; /* Blue background for the header */
+    background-color: #171614; /* Dark background for the header */
     color: white;
     padding: 15px 20px;
     font-size: 1.5rem;
@@ -84,7 +85,7 @@
 
 /* Hover effect for job group heading */
 .job-group-heading-link:hover .job-group-heading {
-    background-color: #171614;  /* Darker blue on hover */
+    background-color: #171614;  /* Darker on hover */
     cursor: pointer;
 }
 
@@ -111,6 +112,7 @@
     text-decoration: none; /* Ensure no underline appears on hover */
     color: #007bff; /* Change link text color on hover */
 }
+
 /* Responsive Media Queries */
 
 /* Mobile (up to 600px) */
@@ -121,19 +123,28 @@
     }
 
     .job-group-cards {
-        grid-template-columns: 1fr; /* Single column for mobile */
+        display: block; /* Switch grid to block layout on mobile */
+    }
+
+    .job-card {
+        width: 100%; /* Ensure job card takes full width on mobile */
+        margin-bottom: 20px; /* Add space between job cards */
+    }
+
+    .job-image {
+        max-height: 150px; /* Ensure images have a consistent height */
     }
 }
 
 /* Tablet (600px to 1024px) */
-@media (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 1024px) {
     .job-group-cards {
         grid-template-columns: repeat(2, 1fr); /* Two columns on tablet */
     }
 }
 
 /* Desktop (above 1024px) */
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
     .job-group-cards {
         grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
     }
