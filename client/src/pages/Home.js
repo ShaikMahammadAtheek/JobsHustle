@@ -13,7 +13,7 @@ const Home = () => {
 
     // Fetch jobs from the backend and group them by jobType
     useEffect(() => {
-        axios.get('http://localhost:5000/api/home') // Fetch sorted jobs
+        axios.get('https://jobs-hustle.onrender.com/api/home') // Fetch sorted jobs
             .then((response) => {
                 const jobsData = response.data;
 
@@ -44,11 +44,15 @@ const Home = () => {
                 <div>
                     <h1 style={{ textAlign: 'center' }}>All Jobs</h1>
                 </div>
-                <div className="carts">
-                    {jobs.map((job) => (
-                        <Card key={job._id} job={job} />
-                    ))}
-                </div>
+                {loading ? ( // Conditional rendering based on loading state
+                    <Spinner /> // Show spinner while loading
+                ) : (
+                    <div className="carts">
+                        {jobs.map((job) => (
+                            <Card key={job._id} job={job} />
+                        ))}
+                    </div>
+                )}
             </section>
             <section className="grouped-job-cards">
     {Object.keys(groupedJobs).map((jobType) => (
