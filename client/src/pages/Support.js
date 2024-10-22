@@ -47,6 +47,7 @@ const Support = () => {
     <div className="support-container">
       <h1 className='Supporth1'>How can we help?</h1>
       <form className="feedback-form" onSubmit={handleSubmit}>
+    <lable for="name"> Enter Your Name </lable>
         <input
           type="text"
           name="name"
@@ -55,6 +56,7 @@ const Support = () => {
           placeholder="Your Name"
           required
         />
+    <lable for="email"> Enter Your Email </lable>
         <input
           type="email"
           name="email"
@@ -63,6 +65,8 @@ const Support = () => {
           placeholder="Your Email"
           required
         />
+
+            <lable for="message"> Enter Your Query </lable>
         <textarea
           name="message"
           value={feedback.message}
