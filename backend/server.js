@@ -935,13 +935,11 @@ app.get('/api/job-by-city/:city', async (req, res) => {
   });
 
 
-//Job routes
-app.use('/api/jobs', jobRoutes);
+
 // Feedback routes
 app.use('/api/feedback', feedbackRoutes);
 // Use the routers
-app.use('/api/notifications', notificationsRouter);
-app.use('/api/jobs', jobsRouter);
+
 
 // Route for feedback submission (POST)
 // app.post('/api/feedback', async (req, res) => {
