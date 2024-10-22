@@ -31,10 +31,10 @@ const Experience = () => {
         <Spinner /> // Show spinner while loading
       ) : (
        
-        <div className="carts">
-            {jobs.map((job) => (
-                <Card key={job._id} job={job} />
-                ))}
+        <div className="job-list">
+          {jobs.map(job => (
+            <Jobss key={job._id} job={job} />
+          ))}
         </div>
       )}
     </div>
