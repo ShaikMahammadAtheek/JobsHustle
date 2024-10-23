@@ -10,13 +10,13 @@ const Freshers = () => {
 
 
   // API URL from environment variable or hardcoded fallback
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  // const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         setLoading(true); // Set loading to true before fetching
-        const response = await axios.get(`${API_URL}/freshers`); // Ensure the API URL is correct
+        const response = await axios.get(`https://jobs-hustle.onrender.com/api/freshers`); // Ensure the API URL is correct
         setJobs(response.data); // Update jobs with response data
       } catch (error) {
         console.error('Error fetching freshers jobs:', error);
@@ -31,22 +31,17 @@ const Freshers = () => {
 
   return (
     <div>
-        <section className="job-cards">
-                <div>
-                    <h1 style={{ textAlign: 'center' }}>Freshers Jobs</h1>
-                </div>
+        <h1>Freshers Jobs</h1>
 
-                {/* Conditionally render spinner or job cards */}
-                {loading ? (
-                    <Spinner />  // Show spinner while loading
-                ) : (
-                    <div className="carts">
-                        {jobs.map((job) => (
-                            <Card key={job._id} job={job} />
-                        ))}
-                    </div>
-                )}
-            </section>
+
+      
+      <div className="job-list">
+
+        {jobs.map(job => (
+       <Jobss key={job._id} job={job}/>
+       
+        ))}
+      </div>
     </div>
   );
 };
