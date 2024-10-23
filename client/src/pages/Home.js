@@ -1,19 +1,23 @@
 // Fresher Voice code 2...
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../components/Card'; // Assuming you have a Card component
+import Spinner from '../components/Spinner'; // Import Spinner component
 import './Homes.css';  // General styles
- import './HomesType.css';  // Specific job-type section styles
+import './HomesType.css';  // Specific job-type section styles
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-    const [jobs, setJobs] = useState([]);
-    const [groupedJobs, setGroupedJobs] = useState({});
+    const [jobs, setJobs] = useState([]);  // State for storing jobs
+    const [groupedJobs, setGroupedJobs] = useState({});  // State for grouped jobs by type
+    const [loading, setLoading] = useState(true);  // Loading state
 
     // Fetch jobs from the backend and group them by jobType
     useEffect(() => {
-        axios.get('http://localhost:5000/api/home') // Fetch sorted jobs
-            .then((response) => {
+        const fetchJobs = async () => {
+            try {
+                setLoading(true); // Start loading
+                const response = await axios.get('https://jobs-hustle.onrender.com/api/home');
                 const jobsData = response.data;
 
                 // Group jobs by jobType, but exclude 'Other' jobs
@@ -30,55 +34,63 @@ const Home = () => {
 
                 setJobs(jobsData); // Set the jobs in state
                 setGroupedJobs(grouped); // Set grouped jobs
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error('Error fetching jobs:', error);
                 alert('Could not fetch jobs, please try again later.');
-            });
+            } finally {
+                setLoading(false); // Stop loading after fetch
+            }
+        };
+
+        fetchJobs();
     }, []);
 
     return (
         <div>
+            {/* Section to show all jobs */}
             <section className="job-cards">
                 <div>
                     <h1 style={{ textAlign: 'center' }}>All Jobs</h1>
                 </div>
-                <div className="carts">
-                    {jobs.map((job) => (
-                        <Card key={job._id} job={job} />
-                    ))}
-                </div>
-            </section>
-            <section className="grouped-job-cards">
-    {Object.keys(groupedJobs).map((jobType) => (
-        <div key={jobType} className="job-group">
-            <Link to={/${jobType.toLowerCase()}} className="job-group-heading-link">
-                <h2 className="job-group-heading">{jobType}</h2>
-            </Link>
-            <div className="job-group-cards">
-                
-                {groupedJobs[jobType].map((job) => (
-                    <Link to={/job/${job._id}} className='HomesJobidLink'>
-                    <div key={job._id} className="job-card">
-                        
-                        <img src={job.imageUrl} alt={job.title} className="job-image" />
-                        <h3 className="job-title">{job.title}</h3>
-                        
+
+                {/* Conditionally render spinner or job cards */}
+                {loading ? (
+                    <Spinner />  // Show spinner while loading
+                ) : (
+                    <div className="carts">
+                        {jobs.map((job) => (
+                            <Card key={job._id} job={job} />
+                        ))}
                     </div>
-                    </Link>
+                )}
+            </section>
+
+            {/* Section to show grouped jobs by type */}
+            <section className="grouped-job-cards">
+                {Object.keys(groupedJobs).map((jobType) => (
+                    <div key={jobType} className="job-group">
+                        <Link to={`/${jobType.toLowerCase()}`} className="job-group-heading-link">
+                            <h2 className="job-group-heading">{jobType}</h2>
+                        </Link>
+                        <div className="job-group-cards">
+                            {groupedJobs[jobType].map((job) => (
+                                <Link to={`/job/${job._id}`} key={job._id} className='HomesJobidLink'>
+                                    <div className="job-card">
+                                        <img src={job.imageUrl} alt={job.title} className="job-image" />
+                                        <h3 className="job-title">{job.title}</h3>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
                 ))}
-
-            </div>
-        </div>
-    ))}
-</section>
-
-
+            </section>
         </div>
     );
 };
 
 export default Home;
+
 
 
 
