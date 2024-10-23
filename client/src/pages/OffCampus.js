@@ -73,9 +73,6 @@ const OffCampus = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true); // Initialize loading state
 
-
-   
-  
   useEffect(() => {
     const fetchJobs = async () => {
       try {
