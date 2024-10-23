@@ -14,9 +14,6 @@ const Support = () => {
     message: ''
   });
   const [status, setStatus] = useState('');
-
-  // API URL from environment variable or hardcoded fallback
-  // const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
   
   const handleChange = (e) => {
     setFeedback({
