@@ -96,16 +96,22 @@ const OffCampus = () => {
 
   return (
     <div>
-      <h1>Off Campus Jobs</h1>
-      {loading ? ( // Conditional rendering based on loading state
-        <Spinner /> // Show spinner while loading
-      ) : (
-        <div className="job-list">
-          {jobs.map(job => (
-            <Jobss key={job._id} job={job} />
-          ))}
-        </div>
-      )}
+      <section className="job-cards">
+                <div>
+                    <h1 style={{ textAlign: 'center' }}>Off-Campous Jobs</h1>
+                </div>
+
+                {/* Conditionally render spinner or job cards */}
+                {loading ? (
+                    <Spinner />  // Show spinner while loading
+                ) : (
+                    <div className="carts">
+                        {jobs.map((job) => (
+                            <Card key={job._id} job={job} />
+                        ))}
+                    </div>
+                )}
+            </section>
     </div>
   );
 };
