@@ -8,7 +8,6 @@ const Internships = () => {
   const [loading, setLoading] = useState(true); // Initialize loading state
 
 
-
   useEffect(() => {
     const fetchJobs = async () => {
       try {
