@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Spinner from './Spinner';  // Assuming Spinner is a component for loading indication
+import Spinner from '../components/Spinner'; // Assuming Spinner is a component for loading indication
 import Card from './Card';  // Assuming Card is a component for rendering job cards
 
 const Internships = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true); // Initialize loading state
 
-
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         setLoading(true); // Set loading to true before fetching
-        const response = await axios.get(`https://jobs-hustle.onrender.com/api/internships`); // Fetch internships from dynamic API URL
+        const response = await axios.get('https://jobs-hustle.onrender.com/api/internships'); // Fetch internships
         setJobs(response.data); // Update jobs with response data
       } catch (error) {
         console.error('Error fetching internships:', error);
@@ -22,23 +21,31 @@ const Internships = () => {
     };
 
     fetchJobs();
-  }, [API_URL]);
+  }, []); // Empty dependency array so it only runs once on mount
+
+  // Display a loading spinner if data is still loading
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div>
       <h1>Internships</h1>
       <div className="job-list">
-
-        {jobs.map(job => (
-       <Jobss key={job._id} job={job}/>
-       
-        ))}
+        {jobs.length > 0 ? (
+          jobs.map(job => (
+            <Card key={job._id} job={job} /> // Assuming Card is a component that renders job details
+          ))
+        ) : (
+          <p>No internships available at the moment.</p>
+        )}
       </div>
     </div>
   );
 };
 
 export default Internships;
+
 
 
 
