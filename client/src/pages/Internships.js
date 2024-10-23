@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Spinner from '../components/Spinner'; // Assuming Spinner is a component for loading indication
+import Spinner from '../components/Spinner'; // Correct import path for Spinner
 import Card from './Card';  // Assuming Card is a component for rendering job cards
 
 const Internships = () => {
@@ -34,7 +34,7 @@ const Internships = () => {
       <div className="job-list">
         {jobs.length > 0 ? (
           jobs.map(job => (
-            <Card key={job._id} job={job} /> // Assuming Card is a component that renders job details
+            <Card key={job._id} job={job} />  // Assuming Card is a component that renders job details
           ))
         ) : (
           <p>No internships available at the moment.</p>
@@ -45,11 +45,6 @@ const Internships = () => {
 };
 
 export default Internships;
-
-
-
-
-
 
 
 
