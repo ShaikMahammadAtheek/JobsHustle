@@ -52,8 +52,7 @@ const JobByCity = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true); // Initialize loading state
 
-  // API URL from environment variable or hardcoded fallback
-  // const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+ 
   
   useEffect(() => {
     const fetchJobs = async () => {
