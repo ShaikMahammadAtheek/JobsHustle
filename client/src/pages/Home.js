@@ -12,12 +12,15 @@ const Home = () => {
     const [groupedJobs, setGroupedJobs] = useState({});  // State for grouped jobs by type
     const [loading, setLoading] = useState(true);  // Loading state
 
+
+    // API URL from environment variable or hardcoded fallback
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
     // Fetch jobs from the backend and group them by jobType
     useEffect(() => {
         const fetchJobs = async () => {
             try {
                 setLoading(true); // Start loading
-                const response = await axios.get('https://jobs-hustle.onrender.com/api/home');
+                const response = await axios.get(`${API_URL}/home`);
                 const jobsData = response.data;
 
                 // Group jobs by jobType, but exclude 'Other' jobs
