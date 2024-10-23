@@ -1,56 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/jobCards.css'; // Import the common CSS for job cards
-import Jobss from '../components/Jobss';
-import Spinner from '../components/Spinner'; // Import your Spinner component
+import Spinner from './Spinner';  // Assuming Spinner is a component for loading indication
+import Card from './Card';  // Assuming Card is a component for rendering job cards
 
 const Internships = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true); // Initialize loading state
 
   // API URL from environment variable or hardcoded fallback
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         setLoading(true); // Set loading to true before fetching
-        const response = await axios.get(`${API_URL}/internships`); // Fetch internships
+        const response = await axios.get(`${API_URL}/internships`); // Fetch internships from dynamic API URL
         setJobs(response.data); // Update jobs with response data
       } catch (error) {
         console.error('Error fetching internships:', error);
-        alert('Could not fetch internships, please try again later.');
       } finally {
         setLoading(false); // Set loading to false after fetching
       }
     };
 
-    fetchJobs(); // Call the fetch function
-  }, []);
+    fetchJobs();
+  }, [API_URL]);
 
   return (
     <div>
-       <section className="job-cards">
-                <div>
-                    <h1 style={{ textAlign: 'center' }}>Interships Jobs</h1>
-                </div>
-
-                {/* Conditionally render spinner or job cards */}
-                {loading ? (
-                    <Spinner />  // Show spinner while loading
-                ) : (
-                    <div className="carts">
-                        {jobs.map((job) => (
-                            <Card key={job._id} job={job} />
-                        ))}
-                    </div>
-                )}
-            </section>
+      <h1>Internships</h1>
+      {loading ? ( // Conditional rendering based on loading state
+        <Spinner /> // Show spinner while loading
+      ) : (
+        <section className="job-cards">
+          <div>
+            <h1 style={{ textAlign: 'center' }}>Internship Jobs</h1>
+          </div>
+          <div className="carts">
+            {jobs.map((job) => (
+              <Card key={job._id} job={job} />  // Card component for rendering each job
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 };
 
 export default Internships;
+
 
 
 
