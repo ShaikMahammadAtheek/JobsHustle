@@ -15,6 +15,9 @@ const Support = () => {
   });
   const [status, setStatus] = useState('');
 
+  // API URL from environment variable or hardcoded fallback
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  
   const handleChange = (e) => {
     setFeedback({
       ...feedback,
@@ -25,7 +28,7 @@ const Support = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://jobs-hustle.onrender.com/api/feedback', feedback);
+      const response = await axios.post(`${API_URL}/feedback`, feedback);
       if (response.data.success) {
         setStatus('Feedback submitted successfully!');
             // Hide the message after 5 seconds
