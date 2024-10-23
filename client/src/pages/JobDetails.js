@@ -677,9 +677,10 @@ const JobDetails = () => {
   const { id } = useParams();
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  // API URL from environment variable or hardcoded fallback
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
   useEffect(() => {
-    axios.get(`https://jobs-hustle.onrender.com/api/home/${id}`)
+    axios.get(`h${API_URL}/home/${id}`)
       .then(response => {
         setJob(response.data);
         setLoading(false);
