@@ -6,6 +6,7 @@ import '../styles/OffCampus.css';
 const OffCampus = () => {
   const [jobs, setJobs] = useState([]);
 
+
   useEffect(() => {
     getJobsByCategory('off-campus').then(res => setJobs(res.data));
   }, []);
