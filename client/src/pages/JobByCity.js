@@ -7,7 +7,8 @@ import '../styles/jobCards.css'; // Import the common CSS for job cards
 const JobByCity = () => {
   const [jobs, setJobs] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { 
+  
     axios.get('http://localhost:5000/api/jobbycity')  // Make sure the API URL is correct
       .then((response) => {
         setJobs(response.data);  // Update jobs with response data
