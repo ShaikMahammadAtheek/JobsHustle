@@ -8,13 +8,13 @@ const Experience = () => {
   const [loading, setLoading] = useState(true); // Initialize loading state
 
   // API URL from environment variable or hardcoded fallback
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+    // const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         setLoading(true); // Set loading to true before fetching
-        const response = await axios.get(`${API_URL}/experience`); // Ensure the API URL is correct
+        const response = await axios.get(`https://jobs-hustle.onrender.com/api/experience`); // Ensure the API URL is correct
         setJobs(response.data); // Update jobs with response data
       } catch (error) {
         console.error('Error fetching experience jobs:', error);
