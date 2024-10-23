@@ -7,7 +7,7 @@ import '../styles/jobCards.css'; // Import the common CSS for job cards
 const Freshers = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true); // Initialize loading state
-
+ 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
