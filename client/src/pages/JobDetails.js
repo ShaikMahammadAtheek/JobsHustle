@@ -6,6 +6,7 @@ const JobDetails = () => {
     const { id } = useParams(); // Get job ID from the URL
     const [job, setJob] = useState(null);
 
+
     useEffect(() => {
         // Fetch job details by ID (you'll need to implement this in jobService.js)
         getJobById(id).then(res => setJob(res.data));
