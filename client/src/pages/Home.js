@@ -12,6 +12,7 @@ const Home = () => {
     const [groupedJobs, setGroupedJobs] = useState({});  // State for grouped jobs by type
     const [loading, setLoading] = useState(true);  // Loading state
 
+    
     // Fetch jobs from the backend and group them by jobType
     useEffect(() => {
         const fetchJobs = async () => {
